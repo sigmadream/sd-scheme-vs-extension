@@ -40,7 +40,7 @@ const atom = (token) => {
 };
 
 const parse = (tokens: Array<string>) => {
-    if (tokens.length === 0) {throw Error("Error: Unexpected EOF while reading!");}
+    if (tokens.length === 0) { throw Error("Error: Unexpected EOF while reading!"); }
     const no1 = tokens.shift();
     if (no1 === "(") {
         let list: (string)[] = [];
@@ -105,8 +105,8 @@ function _evaluate(s: string | number | Array<string>, env = globalEnv) {
         const [_, ...exps] = s;
         return exps.map(exp => _evaluate(exp, env)).pop();
     } else {
-        const [op, ...args] = s.map(exp => _evaluate(exp, env))
-        if (typeof op !== "function") {throw Error(`Error: ${s[0]} is not a function!`);}
+        const [op, ...args] = s.map(exp => _evaluate(exp, env));
+        if (typeof op !== "function") { throw Error(`Error: ${s[0]} is not a function!`); }
         return op.apply(null, args);
     }
 }
