@@ -9,12 +9,15 @@
         "name": "Sangkon Han"
     },
 	"engines": {
-		"vscode": "^1.75.5"
+		"vscode": "^1.107.0"
 	},
 	"categories": [
 		"Other"
 	],
 	"main": "./out/extension.js",
+	"activationEvents": [
+		"onLanguage:scheme"
+	],
 	"contributes": {
 		"commands": [
 			{
