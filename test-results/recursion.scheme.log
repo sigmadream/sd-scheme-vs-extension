@@ -1,0 +1,72 @@
+============================================================
+테스트 결과: recursion.scheme
+============================================================
+실행 시간: 2025. 12. 19. 오후 3:23:25
+총 표현식: 24
+성공: 24
+실패: 0
+상태: ✅ 성공
+============================================================
+
+[1/24] (define (factorial n) (if (= n 0) 1 (* n (factorial (- n 1)))))
+
+[2/24] (factorial 5)
+=> 120
+
+[3/24] (factorial 10)
+=> 3628800
+
+[4/24] (define (fibonacci n) (cond ((= n 0) 0) ((= n 1) 1) (else (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))
+
+[5/24] (fibonacci 5)
+=> 5
+
+[6/24] (fibonacci 10)
+=> 55
+
+[7/24] (define (sum lst) (if (null? lst) 0 (+ (car lst) (sum (cdr lst)))))
+
+[8/24] (sum (list 1 2 3 4 5))
+=> 15
+
+[9/24] (define (length-rec lst) (if (null? lst) 0 (+ 1 (length-rec (cdr lst)))))
+
+[10/24] (length-rec (list 1 2 3 4 5))
+=> 5
+
+[11/24] (define (reverse-rec lst) (if (null? lst) (list) (append (reverse-rec (cdr lst)) (list (car lst)))))
+
+[12/24] (reverse-rec (list 1 2 3 4 5))
+=> (5 4 3 2 1)
+
+[13/24] (define (max-rec lst) (cond ((null? (cdr lst)) (car lst)) (else (max (car lst) (max-rec (cdr lst))))))
+
+[14/24] (max-rec (list 3 7 2 9 1 5))
+=> 9
+
+[15/24] (define (power base exp) (if (= exp 0) 1 (* base (power base (- exp 1)))))
+
+[16/24] (power 2 8)
+=> 256
+
+[17/24] (power 3 4)
+=> 81
+
+[18/24] (define (gcd a b) (if (= b 0) a (gcd b (remainder a b))))
+
+[19/24] (gcd 48 18)
+=> 6
+
+[20/24] (gcd 100 25)
+=> 25
+
+[21/24] (define (flatten lst) (cond ((null? lst) (list)) ((list? (car lst)) (append (flatten (car lst)) (flatten (cdr lst)))) (else (cons (car lst) (flatten (cdr lst))))))
+
+[22/24] (flatten (list (list 1 2) (list 3 4) 5))
+=> (1 2 3 4 5)
+
+[23/24] (define (nth n lst) (if (= n 0) (car lst) (nth (- n 1) (cdr lst))))
+
+[24/24] (nth 2 (list 10 20 30 40 50))
+=> 30
+

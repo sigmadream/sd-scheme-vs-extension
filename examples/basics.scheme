@@ -1,0 +1,53 @@
+;; ============================================
+;; 기본 문법 예제
+;; ============================================
+
+;; 1. 숫자와 산술 연산
+(+ 1 2 3 4)
+(* 2 3 4)
+(- 10 3)
+(/ 20 4)
+
+;; 2. 변수 정의
+(define x 10)
+(define y 20)
+(+ x y)
+
+;; 3. 비교 연산
+(> 5 3)
+(< 2 8)
+(= 5 5)
+(>= 10 10)
+
+;; 4. 조건문 (if)
+(if (> 5 3)
+    "5는 3보다 큽니다"
+    "5는 3보다 작습니다")
+
+(if (< 2 1)
+    "참"
+    "거짓")
+
+;; 5. cond 문 (여러 조건)
+(define score 85)
+(cond
+  ((>= score 90) "A")
+  ((>= score 80) "B")
+  ((>= score 70) "C")
+  (else "F"))
+
+;; 6. 리스트 기본
+(define my-list (list 1 2 3 4 5))
+my-list
+(car my-list)
+(cdr my-list)
+(length my-list)
+
+;; 7. cons로 리스트 만들기
+(cons 1 (list 2 3))
+(cons 1 (cons 2 (cons 3 null)))
+
+;; 8. 문자열
+(define greeting "Hello, Scheme!")
+greeting
+(display greeting)

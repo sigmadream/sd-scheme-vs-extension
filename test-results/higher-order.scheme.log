@@ -1,0 +1,111 @@
+============================================================
+테스트 결과: higher-order.scheme
+============================================================
+실행 시간: 2025. 12. 19. 오후 3:23:25
+총 표현식: 40
+성공: 40
+실패: 0
+상태: ✅ 성공
+============================================================
+
+[1/40] (define numbers (list 1 2 3 4 5))
+
+[2/40] (define (square x) (* x x))
+
+[3/40] (map square numbers)
+=> (1 4 9 16 25)
+
+[4/40] (define (double x) (* 2 x))
+
+[5/40] (map double numbers)
+=> (2 4 6 8 10)
+
+[6/40] (define (even? x) (= (remainder x 2) 0))
+
+[7/40] (filter even? numbers)
+=> (2 4)
+
+[8/40] (define (greater-than-5 x) (> x 5))
+
+[9/40] (filter greater-than-5 (list 3 6 2 8 1 9))
+=> (6 8 9)
+
+[10/40] (define (add x y) (+ x y))
+
+[11/40] (fold add 0 numbers)
+=> 15
+
+[12/40] (define (multiply x y) (* x y))
+
+[13/40] (fold multiply 1 numbers)
+=> 120
+
+[14/40] (define (map-then-sum f lst) (fold add 0 (map f lst)))
+
+[15/40] (map-then-sum square numbers)
+=> 55
+
+[16/40] (map-then-sum double numbers)
+=> 30
+
+[17/40] (define (zip-with f lst1 lst2) (if (or (null? lst1) (null? lst2)) (list) (cons (f (car lst1) (car lst2)) (zip-with f (cdr lst1) (cdr lst2)))))
+
+[18/40] (zip-with + (list 1 2 3) (list 4 5 6))
+=> (5 7 9)
+
+[19/40] (zip-with * (list 2 3 4) (list 5 6 7))
+=> (10 18 28)
+
+[20/40] (define (compose f g) (lambda (x) (f (g x))))
+
+[21/40] (define add-one (lambda (x) (+ x 1)))
+
+[22/40] (define multiply-two (lambda (x) (* x 2)))
+
+[23/40] (define add-one-then-double (compose multiply-two add-one))
+
+[24/40] (add-one-then-double 5)
+=> 12
+
+[25/40] (define (make-adder n) (lambda (x) (+ x n)))
+
+[26/40] (define add-five (make-adder 5))
+
+[27/40] (add-five 10)
+=> 15
+
+[28/40] (define add-ten (make-adder 10))
+
+[29/40] (add-ten 20)
+=> 30
+
+[30/40] (define (all? pred lst) (if (null? lst) #t (if (pred (car lst)) (all? pred (cdr lst)) #f)))
+
+[31/40] (all? even? (list 2 4 6 8))
+=> true
+
+[32/40] (all? even? (list 2 4 5 8))
+=> false
+
+[33/40] (define (any? pred lst) (if (null? lst) #f (if (pred (car lst)) #t (any? pred (cdr lst)))))
+
+[34/40] (any? even? (list 1 3 5 7))
+=> false
+
+[35/40] (any? even? (list 1 3 4 7))
+=> true
+
+[36/40] (define (transform-list f lst) (if (null? lst) (list) (cons (f (car lst)) (transform-list f (cdr lst)))))
+
+[37/40] (transform-list square (list 1 2 3 4))
+=> (1 4 9 16)
+
+[38/40] (apply + (list 1 2 3 4 5))
+=> 15
+
+[39/40] (apply max (list 3 7 2 9 1))
+=> 7
+
+[40/40] (let ((numbers (list 1 2 3 4 5)) (square (lambda (x) (* x x)))) (map square numbers))
+=> (1 4 9 16 25)
+

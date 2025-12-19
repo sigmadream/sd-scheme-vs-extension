@@ -1,0 +1,94 @@
+;; ============================================
+;; 재귀 함수 예제
+;; ============================================
+
+;; 1. 팩토리얼 (재귀)
+(define (factorial n)
+  (if (= n 0)
+      1
+      (* n (factorial (- n 1)))))
+
+(factorial 5)
+(factorial 10)
+
+;; 2. 피보나치 수열
+(define (fibonacci n)
+  (cond
+    ((= n 0) 0)
+    ((= n 1) 1)
+    (else (+ (fibonacci (- n 1))
+             (fibonacci (- n 2))))))
+
+(fibonacci 5)
+(fibonacci 10)
+
+;; 3. 리스트 합 (재귀)
+(define (sum lst)
+  (if (null? lst)
+      0
+      (+ (car lst) (sum (cdr lst)))))
+
+(sum (list 1 2 3 4 5))
+
+;; 4. 리스트 길이 (재귀)
+(define (length-rec lst)
+  (if (null? lst)
+      0
+      (+ 1 (length-rec (cdr lst)))))
+
+(length-rec (list 1 2 3 4 5))
+
+;; 5. 리스트 뒤집기 (재귀)
+(define (reverse-rec lst)
+  (if (null? lst)
+      (list)
+      (append (reverse-rec (cdr lst))
+              (list (car lst)))))
+
+(reverse-rec (list 1 2 3 4 5))
+
+;; 6. 리스트에서 최댓값 찾기 (재귀)
+(define (max-rec lst)
+  (cond
+    ((null? (cdr lst)) (car lst))
+    (else (max (car lst) (max-rec (cdr lst))))))
+
+(max-rec (list 3 7 2 9 1 5))
+
+;; 7. 거듭제곱 (재귀)
+(define (power base exp)
+  (if (= exp 0)
+      1
+      (* base (power base (- exp 1)))))
+
+(power 2 8)
+(power 3 4)
+
+;; 8. 최대공약수 (유클리드 알고리즘)
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+(gcd 48 18)
+(gcd 100 25)
+
+;; 9. 리스트 평탄화 (중첩 리스트를 평탄화)
+(define (flatten lst)
+  (cond
+    ((null? lst) (list))
+    ((list? (car lst))
+     (append (flatten (car lst))
+             (flatten (cdr lst))))
+    (else (cons (car lst)
+                (flatten (cdr lst))))))
+
+(flatten (list (list 1 2) (list 3 4) 5))
+
+;; 10. 리스트에서 n번째 요소 찾기
+(define (nth n lst)
+  (if (= n 0)
+      (car lst)
+      (nth (- n 1) (cdr lst))))
+
+(nth 2 (list 10 20 30 40 50))

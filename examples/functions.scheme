@@ -1,0 +1,66 @@
+;; ============================================
+;; 함수 정의와 호출 예제
+;; ============================================
+
+;; 1. 간단한 함수 정의 (lambda)
+(define square
+  (lambda (x)
+    (* x x)))
+
+(square 5)
+(square 10)
+
+;; 2. 함수 정의 간편 문법
+(define (double x)
+  (* 2 x))
+
+(double 7)
+
+;; 3. 여러 인자를 받는 함수
+(define (add x y z)
+  (+ x y z))
+
+(add 1 2 3)
+
+;; 4. 재귀 함수 (팩토리얼)
+(define (factorial n)
+  (if (= n 0)
+      1
+      (* n (factorial (- n 1)))))
+
+(factorial 5)
+(factorial 10)
+
+;; 5. 절댓값 함수
+(define (abs x)
+  (if (< x 0)
+      (- x)
+      x))
+
+(abs -5)
+(abs 5)
+
+;; 6. 최댓값 함수
+(define (max a b)
+  (if (> a b)
+      a
+      b))
+
+(max 10 20)
+(max 100 50)
+
+;; 7. 거듭제곱 함수
+(define (power base exp)
+  (if (= exp 0)
+      1
+      (* base (power base (- exp 1)))))
+
+(power 2 3)
+(power 5 2)
+
+;; 8. 함수를 인자로 받는 함수
+(define (apply-twice f x)
+  (f (f x)))
+
+(apply-twice square 3)
+(apply-twice double 5)

@@ -1,0 +1,88 @@
+============================================================
+테스트 결과: lists.scheme
+============================================================
+실행 시간: 2025. 12. 19. 오후 3:23:25
+총 표현식: 29
+성공: 29
+실패: 0
+상태: ✅ 성공
+============================================================
+
+[1/29] (define numbers (list 1 2 3 4 5))
+
+[2/29] (define fruits (list "apple" "banana" "cherry"))
+
+[3/29] (car numbers)
+=> 1
+
+[4/29] (cdr numbers)
+=> (2 3 4 5)
+
+[5/29] (car (cdr numbers))
+=> 2
+
+[6/29] (list? numbers)
+=> true
+
+[7/29] (null? (list))
+=> true
+
+[8/29] (pair? numbers)
+=> true
+
+[9/29] (pair? (list))
+=> false
+
+[10/29] (length numbers)
+=> 5
+
+[11/29] (length (list))
+=> 0
+
+[12/29] (define list1 (list 1 2 3))
+
+[13/29] (define list2 (list 4 5 6))
+
+[14/29] (append list1 list2)
+=> (1 2 3 4 5 6)
+
+[15/29] (reverse numbers)
+=> (5 4 3 2 1)
+
+[16/29] (reverse (list "a" "b" "c"))
+=> ("c" "b" "a")
+
+[17/29] (define (sum-list lst) (if (null? lst) 0 (+ (car lst) (sum-list (cdr lst)))))
+
+[18/29] (sum-list numbers)
+=> 15
+
+[19/29] (sum-list (list 10 20 30))
+=> 60
+
+[20/29] (define (max-list lst) (if (null? (cdr lst)) (car lst) (max (car lst) (max-list (cdr lst)))))
+
+[21/29] (max-list (list 3 7 2 9 1))
+=> 9
+
+[22/29] (define (add-to-list item lst) (append lst (list item)))
+
+[23/29] (add-to-list 6 numbers)
+=> (1 2 3 4 5 6)
+
+[24/29] (define (member? item lst) (cond ((null? lst) #f) ((= (car lst) item) #t) (else (member? item (cdr lst)))))
+
+[25/29] (member? 3 numbers)
+=> true
+
+[26/29] (member? 10 numbers)
+=> false
+
+[27/29] (define nested (list (list 1 2) (list 3 4) (list 5 6)))
+
+[28/29] nested
+=> ((1 2) (3 4) (5 6))
+
+[29/29] (car nested)
+=> (1 2)
+
